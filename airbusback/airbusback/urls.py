@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 
 # Username: admin
 # Password: AirbusAirgliders
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/feedback/',include('feedback.urls')),
 ]

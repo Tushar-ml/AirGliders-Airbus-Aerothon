@@ -29,7 +29,7 @@ def sentimentAnalyzer(feedback):
         sent = list(sent.items())
         sent.sort(key=lambda x:x[1],reverse=True)
         score = sent[0][1]
-        sentiment = sent[0][0]
+        sentiment = sent[0][1]
     if sentiment == 'pos':
         sentiment = 'Positive'
     elif sentiment == 'neg':

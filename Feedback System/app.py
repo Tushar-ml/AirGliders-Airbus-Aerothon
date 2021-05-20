@@ -1,9 +1,11 @@
 from flask import Flask,request
 from flask import render_template
 from nltk.sentiment import SentimentIntensityAnalyzer
+
 sia = SentimentIntensityAnalyzer()
 
-app = Flask("__name__")
+app = Flask(__name__)
+
 
 @app.route('/',methods =["GET", "POST"])
 def home():

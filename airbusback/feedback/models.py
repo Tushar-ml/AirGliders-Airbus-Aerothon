@@ -4,6 +4,10 @@ from django.core.validators import MaxLengthValidator, validate_email
 # Create your models here.
 from django.contrib.auth.models import User
 
+def get_email(self):
+    return self.email
+
+User.add_to_class('__str__',get_email)
 
 class bugTopics(models.Model):
     topicname = models.CharField(max_length=100,unique=True,validators=[MaxLengthValidator(100)])
@@ -14,7 +18,7 @@ class bugTopics(models.Model):
 
 class bugReport(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
-    topic = models.ForeignKey(bugTopics,on_delete=models.SET_NULL,null=True,related_name='topic')
+    topic = models.ForeignKey(bugTopics,on_delete=models.DO_NOTHING,related_name='topic')
     title = models.CharField(max_length=250,null=False)
     description = models.TextField(null=False)
     created_time = models.DateTimeField(null=False,auto_now_add=True)

@@ -13,8 +13,8 @@ class bugTopics(models.Model):
 
 
 class bugReport(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    topic = models.ForeignKey(bugTopics,on_delete=models.SET_NULL,null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
+    topic = models.ForeignKey(bugTopics,on_delete=models.SET_NULL,null=True,related_name='topic')
     title = models.CharField(max_length=250,null=False)
     description = models.TextField(null=False)
     created_time = models.DateTimeField(null=False,auto_now_add=True)

@@ -1,4 +1,3 @@
-import re
 from .serializers import BugReport_Serializer, BugTopics_Serializer, Feedback_Serializer
 from django.contrib.auth.models import AnonymousUser, User
 from django.shortcuts import render
@@ -39,7 +38,19 @@ def get_bugReport(request):
 
         serializer = BugReport_Serializer(bugReports,many=True)
         return JsonResponse(serializer.data,safe=False)
+
+@api_view(['POST'])
+def add_bugReport(request):
+
+    if request.method == 'POST':
+        # print(request.data)
+        data = JSONParser().parse(request)
+        serializer = BugReport_Serializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data,safe=False)
         
+        return JsonResponse(serializer.errors,status=400)
 
 @api_view(['GET'])
 def get_topics(request):
@@ -49,3 +60,12 @@ def get_topics(request):
 
         serializer = BugTopics_Serializer(topics,many=True)
         return JsonResponse(serializer.data,safe=False)
+
+# @api_view(['GET'])
+# def get_bugReportTopicwise(request):
+
+#     if request.method == 'GET':
+#         topics = bugTopics.objects.all()
+
+#         serializer = BugTopics_Reports_Serializers(topics,many=True)
+#         return JsonResponse(serializer.data,safe=False)

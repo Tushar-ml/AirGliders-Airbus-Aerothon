@@ -18,7 +18,7 @@ body {
     text-align: center;
 }
 .card-body {
-    max-height: 200px;
+    max-height: 400px;
     overflow: auto;
 }
 .back-btn {

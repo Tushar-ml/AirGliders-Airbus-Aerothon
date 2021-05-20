@@ -6,14 +6,15 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser 
 # Create your views here.
 from .models import Feedback, bugReport,bugTopics
-
+from nltk.sentiment import SentimentIntensityAnalyzer
+sia = SentimentIntensityAnalyzer()
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 @api_view(['GET','POST'])
 def add_feedback(request):
 
-    if request.method == 'GET':
+    '''if request.method == 'GET':
         feedbacks = Feedback.objects.all()
 
         serializer = Feedback_Serializer(feedbacks,many=True)
@@ -27,8 +28,36 @@ def add_feedback(request):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data,safe=False)
-        return JsonResponse(serializer.errors, status=400)
+        return JsonResponse(serializer.errors, status=400)'''
+    if request.method=='POST':
+        first_name = request.POST.get("fname")
+        email = request.POST.get("email")
+        feedback = request.POST.get("feedback")
+        rating = request.POST.get("rating")
+        result = f'Name: {first_name} \n email: {email} \n Feedback: {feedback} \n Rating: {rating}'
+        print(result)
+        print()
+        print(sentimentAnalyzer(feedback))
+        
+    return render(request,'feedback.html')
 
+def sentimentAnalyzer(feedback):
+    score = 0
+    sentiment = 'Neutral'
+    if feedback != None:
+        sent = sia.polarity_scores(feedback)
+        sent.pop('compound')
+        sent = list(sent.items())
+        sent.sort(key=lambda x:x[1],reverse=True)
+        score = sent[0][1]
+        sentiment = sent[0][1]
+    if sentiment == 'pos':
+        sentiment = 'Positive'
+    elif sentiment == 'neg':
+        sentiment = 'Negative'
+    else:
+        sentiment = 'Neutral'
+    return sentiment,score
 
 @api_view(['GET'])
 def get_bugReport(request):

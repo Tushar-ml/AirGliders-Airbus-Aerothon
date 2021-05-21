@@ -6,3 +6,4 @@ pyttsx3
 pyaudio
 speechrecognition
 OpenAI
+django-rest-swagger

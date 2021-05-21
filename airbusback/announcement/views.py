@@ -9,6 +9,17 @@ from .models import Announcement
 
 @api_view(['GET'])
 def get_announcements(request):
+    '''
+    Returns all the announcements in a list of JSON Objects
+
+    :return: JSON Object {
+        "title" : string,
+        "description" : string,
+        "created_time" : time,
+        "last_update_time" : time
+    }
+    '''
+
 
     if request.method == 'GET':
         announcements = Announcement.objects.all()
@@ -18,6 +29,15 @@ def get_announcements(request):
 
 @api_view(['POST'])
 def add_announcement(request):
+    '''
+    Adds a Announcement Record
+
+    :params: Request Object {
+        "title" : string,
+        "description" : string
+    }
+    '''
+
 
     if request.method=='POST':
 

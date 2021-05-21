@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'chatbot.apps.ChatbotConfig',
     'feedback.apps.FeedbackConfig',
     'announcement.apps.AnnouncementConfig',
+    'rest_framework_swagger',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

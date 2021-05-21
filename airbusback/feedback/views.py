@@ -17,6 +17,20 @@ sia = SentimentIntensityAnalyzer()
 
 @api_view(['GET','POST'])
 def add_feedback(request):
+    '''
+    Handles both the GET and POST requests
+
+    GET Request returns all the Feedback Records
+
+    POST Request process the sentiment from the description provided and predict "Sentiment" and "Score" add the received object to database 
+
+    :param: Request Object {
+        "name" : string (Username),
+        "email" : string (Email Address),
+        "description" : string,
+        "rating" : int
+    }
+    '''
 
     if request.method == 'GET':
         feedbacks = Feedback.objects.all()
@@ -40,6 +54,10 @@ def add_feedback(request):
 
 @api_view(['GET'])
 def get_bugReport(request):
+    '''
+    Returns all the Bug Reports in JSON Format
+    '''
+    
 
     if request.method == 'GET':
         bugReports = bugReport.objects.all()
@@ -51,6 +69,20 @@ def get_bugReport(request):
 class add_bugReport(APIView):
     parser_classes = (MultiPartParser, FormParser)
     def post(self,request):
+
+        '''
+        Handles POST request to add BugReport
+
+        :param: Request Object {
+            "user" : string, (email address)
+            "topic" : string, (topic name)
+            "title" : string,
+            "description" : string,
+            "screenshot" : imagefile
+        }
+
+        :return: JSON object (which is stored in the database)
+        '''
         
         # print(request.data)
         # data = JSONParser().parse(request)
@@ -72,6 +104,12 @@ class add_bugReport(APIView):
 
 @api_view(['GET'])
 def get_topics(request):
+    '''
+    Returns list of the topics for Bugs
+
+    :param: topicname : string
+
+    '''
 
     if request.method == 'GET':
         topics = bugTopics.objects.all()
@@ -80,6 +118,12 @@ def get_topics(request):
         return JsonResponse(serializer.data,safe=False)
 
 def feedback_page(request):
+    '''
+    Return HTML Page for taking Feedback from user
+
+    '''
+
+
     return render(request,'index.html')
 
 # @api_view(['GET'])
@@ -92,6 +136,16 @@ def feedback_page(request):
 #         return JsonResponse(serializer.data,safe=False)
 
 def sentimentAnalyzer(feedback):
+    '''
+    Analyses the Sentiment from the string
+
+    :params: feedback : string
+
+    :return: sentiment("Postive","Neutral","Negative")
+
+    '''
+
+
     score = 0
     sentiment = 'Neutral'
     if feedback != None:

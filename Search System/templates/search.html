@@ -6,21 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='../static/css/search.css' rel='stylesheet'>
     <title>Search Bar</title>
-
+    <style>button {
+      padding:10px;
+      background-color:#6a67ce;
+      color: #FFFFFF;
+      border: 0px;
+      cursor:pointer;
+      border-radius: 5px;
+  }</style>
 </head>
 <body>
     <div class="container">
     <script async src="https://cse.google.com/cse.js?cx=169c6ab7753a0b67b"></script>
   	<font size=50><h1>Search Airbus</h1></font>
-      <form  id='form' metod='post' action="{{url_for('search')}}">
+      <form  id='form' method='post' action="{{url_for('search')}}">
 		<div class="search-box">
 			<input type="text" class="search-box-input" id='query' name="search" placeholder="What are you looking for ?">
+      <span id='output'></span>
 			<button class="search-box-btn">
 				<svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
 			</button>
+      <button type='button' onclick="runSpeechRecognition()">Voice Search</button>
 		</div>
     </form>
-  </div>
+    
+    
   <script src='../static/js/search.js'></script>
+  <script>
+    /* JS comes here */
+      function runSpeechRecognition() {
+          // get output div reference
+          var output = document.getElementById("query");
+          // get action element reference
+          var action = document.getElementById("query");
+              // new speech recognition object
+              var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+              var recognition = new SpeechRecognition();
+          
+              // This runs when the speech recognition service starts
+              recognition.onstart = function() {
+                  action.placeholder = "listening, please speak...";
+              };
+              
+              recognition.onspeechend = function() {
+                  action.placeholder = "stopped listening, hope you are done...";
+                  recognition.stop();
+              }
+            
+              // This runs when the speech recognition service returns result
+              recognition.onresult = function(event) {
+                  var transcript = event.results[0][0].transcript;
+                  var confidence = event.results[0][0].confidence;
+                  output.value = transcript
+              
+      
+              };
+            
+               // start recognition
+               recognition.start();
+        }
+  </script>
 </body>
 </html>

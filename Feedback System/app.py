@@ -23,22 +23,19 @@ def home():
     return render_template('index.html')
 
 def sentimentAnalyzer(feedback):
-    score = 0
+    
     sentiment = 'Neutral'
     if feedback != None:
         sent = sia.polarity_scores(feedback)
-        sent.pop('compound')
-        sent = list(sent.items())
-        sent.sort(key=lambda x:x[1],reverse=True)
-        score = sent[0][1]
-        sentiment = sent[0][1]
-    if sentiment == 'pos':
-        sentiment = 'Positive'
-    elif sentiment == 'neg':
-        sentiment = 'Negative'
-    else:
-        sentiment = 'Neutral'
-    return sentiment,score
+        #sent.pop('compound')
+        comp = sent['compound']
+        if comp>0.05:
+            sentiment = 'Positive'
+        elif comp<-0.05:
+            sentiment = 'Negative'
+        else:
+            sentiment = 'Neutral'
+    return sentiment
 
 
 if __name__ == '__main__':

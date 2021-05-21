@@ -5,6 +5,10 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])
 def search():
 
+    if request.method == 'POST':
+        query = request.form.get('query')
+        print(query)
+
     return render_template('search.html')
 
 

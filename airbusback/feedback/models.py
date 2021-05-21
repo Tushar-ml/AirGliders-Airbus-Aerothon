@@ -28,6 +28,7 @@ class bugReport(models.Model):
         return self.topic.topicname + ": " + self.title + " - " + self.description[:20]
 
 class Feedback(models.Model):
+    name = models.CharField(null=False,default='default',max_length=30)
     email = models.EmailField(null=False,validators=[validate_email],default='default@gmail.com')
     description = models.TextField(null=False)
     created_time = models.DateTimeField(null=False,auto_now_add=True)
@@ -40,6 +41,8 @@ class Feedback(models.Model):
     ]
 
     rating = models.IntegerField(choices=RATING_CHOICES,null=True)
+    sentiment = models.CharField(null=False,max_length=20,default='Neutral')
+    score = models.FloatField(null=False,default=0)
 
     def __str__(self):
         return str(self.rating) + ": " + self.description[:20]

@@ -10,6 +10,10 @@ from .models import Feedback, bugReport,bugTopics
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.shortcuts import render
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+sia = SentimentIntensityAnalyzer()
 
 @api_view(['GET','POST'])
 def add_feedback(request):
@@ -21,9 +25,11 @@ def add_feedback(request):
         return JsonResponse(serializer.data,safe=False)
 
     if request.method=='POST':
-        
         # username = request.POST.get('username')
+        
         data = JSONParser().parse(request)
+        sentiment,score = sentimentAnalyzer(data['description'])
+        data['sentiment'],data['score'] = sentiment,score
         serializer = Feedback_Serializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -80,3 +86,21 @@ def get_topics(request):
 
 #         serializer = BugTopics_Reports_Serializers(topics,many=True)
 #         return JsonResponse(serializer.data,safe=False)
+
+def sentimentAnalyzer(feedback):
+    score = 0
+    sentiment = 'Neutral'
+    if feedback != None:
+        sent = sia.polarity_scores(feedback)
+        sent.pop('compound')
+        sent = list(sent.items())
+        sent.sort(key=lambda x:x[1],reverse=True)
+        score = sent[0][1]
+        sentiment = sent[0][0]
+    if sentiment == 'pos':
+        sentiment = 'Positive'
+    elif sentiment == 'neg':
+        sentiment = 'Negative'
+    else:
+        sentiment = 'Neutral'
+    return sentiment,score

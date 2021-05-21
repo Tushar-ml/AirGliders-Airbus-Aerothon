@@ -1,5 +1,0 @@
-Dependencies:
--pyttsx3
--pyaudio
--speechrecognition
--OpenAI

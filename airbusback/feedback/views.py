@@ -48,11 +48,11 @@ def add_feedback(request):
             context = {
                 'success' : "Feedback is Successfully Submitted"
             }
-            return render(request,'index.html',context=context)
+            return render(request,'feedback/index.html',context=context)
         return JsonResponse(serializer.errors, status=400)
 
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def get_bugReport(request):
     '''
     Returns all the Bug Reports in JSON Format
@@ -64,6 +64,16 @@ def get_bugReport(request):
 
         serializer = BugReport_Serializer(bugReports,many=True)
         return JsonResponse(serializer.data,safe=False)
+
+    if request.method == 'POST':
+        bugReports = JSONParser().parse(request)
+
+        serializer = BugReport_Serializer(bugReports)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data,safe=False)
+        return JsonResponse(serializer.errors,safe=False)
+
 
 # @api_view(['POST'])
 class add_bugReport(APIView):
@@ -124,7 +134,7 @@ def feedback_page(request):
     '''
 
 
-    return render(request,'index.html')
+    return render(request,'feedback/index.html')
 
 # @api_view(['GET'])
 # def get_bugReportTopicwise(request):

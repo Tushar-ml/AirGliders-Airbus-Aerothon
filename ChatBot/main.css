@@ -1,0 +1,25 @@
+body{
+    background-image: url('istockphoto-1020519776-640x640.jpg');
+    background-repeat: no-repeat;
+    background-color: #4088FF;
+}
+.chat_window {
+    /*position: absolute;*/
+    
+    height: 500px;
+    border-radius: 10px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    /*transform: translateX(-50%) translateY(-50%);*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f8f8f8;
+    overflow: hidden;
+  }
+  .w{
+   
+    height: 400px;  
+  }
+  ul{ max-height: 300px;
+    overflow-y:scroll;
+  }

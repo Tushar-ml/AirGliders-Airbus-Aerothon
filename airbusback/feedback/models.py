@@ -17,7 +17,7 @@ class bugTopics(models.Model):
 
 
 class bugReport(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
+    email = models.EmailField(null=False,validators=[validate_email],default='default@gmail.com')
     topic = models.ForeignKey(bugTopics,on_delete=models.DO_NOTHING,related_name='topic')
     title = models.CharField(max_length=250,null=False)
     description = models.TextField(null=False)

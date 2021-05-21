@@ -23,10 +23,9 @@ class Feedback_Serializer(serializers.ModelSerializer):
 
 class BugReport_Serializer(serializers.ModelSerializer):
     topic = serializers.StringRelatedField(read_only=True)
-    user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = bugReport
-        fields = ['user','topic','title','description','created_time','screenshot']
+        fields = ['email','topic','title','description','created_time','screenshot']
 
 class UserFilterPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
 
@@ -52,10 +51,10 @@ class UserToString_Serializer(serializers.StringRelatedField):
 
 class BugReportAdd_Serializer(serializers.ModelSerializer):
     topic = TopicFilterPrimaryKeyRelatedField(queryset=bugTopics.objects.all(),many=False)
-    user = UserFilterPrimaryKeyRelatedField(queryset=User.objects.all(),many=False)
+    # user = UserFilterPrimaryKeyRelatedField(queryset=User.objects.all(),many=False)
     class Meta:
         model = bugReport
-        fields = ['user','topic','title','description','created_time','screenshot']
+        fields = ['email','topic','title','description','created_time','screenshot']
 
     def create(self, validated_data):
         return bugReport.objects.create(

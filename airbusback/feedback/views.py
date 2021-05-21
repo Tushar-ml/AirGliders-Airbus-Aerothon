@@ -1,3 +1,4 @@
+import requests
 from rest_framework.views import APIView
 from .serializers import BugReport_Serializer, BugTopics_Serializer, Feedback_Serializer, BugReportAdd_Serializer
 from django.contrib.auth.models import AnonymousUser, User
@@ -108,7 +109,10 @@ class add_bugReport(APIView):
         serializer = BugReportAdd_Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            context = {
+                "successful" : "Bug Successfully Submitted"
+            }
+            return render(request,'feedback/bugreport.html',context=context)
         
         return Response(serializer.errors,status=400)
 
@@ -172,3 +176,14 @@ def sentimentAnalyzer(feedback):
     else:
         sentiment = 'Neutral'
     return sentiment,score
+
+def bugreport(request):
+
+    topics = requests.get('http://127.0.0.1:8000/feedback/bug/topics/get/')
+    topics = topics.json()
+    print(topics)
+
+    context = {
+        "topics" : topics
+    }
+    return render(request,'feedback/bugreport.html',context=context)

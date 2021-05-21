@@ -18,7 +18,7 @@ class Feedback_Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = Feedback
-        fields = ['email','description','rating']
+        fields = ['name','email','description','rating','sentiment','score']
 
 
 class BugReport_Serializer(serializers.ModelSerializer):

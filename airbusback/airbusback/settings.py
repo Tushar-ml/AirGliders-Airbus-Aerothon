@@ -59,7 +59,7 @@ ROOT_URLCONF = 'airbusback.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/feedback/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/',include('main.urls'),name='main-page'),
     path('feedback/',include('feedback.urls')),
-    path('announcements/',include('announcement.urls'))
+    path('announcements/',include('announcement.urls')),
+    path('chatbot/',include('chatbot.urls')),
 ]

@@ -7,3 +7,4 @@ pyaudio
 speechrecognition
 OpenAI
 django-rest-swagger
+chatterbot==1.0.4

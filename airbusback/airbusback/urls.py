@@ -29,4 +29,5 @@ urlpatterns = [
     path('feedback/',include('feedback.urls')),
     path('announcements/',include('announcement.urls')),
     path('chatbot/',include('chatbot.urls')),
+    path('search/',include('search.urls')),
 ]

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>AIRBUS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -54,13 +54,13 @@
                 </div>
                 <div class="col-4">
                     <div id="drager2">
-                            <a href="../Search System/templates/search.html" target="_blank">   <h6 style="padding:10px">Search</h6></a>
+                            <a href="{% url 'search' %}" target="_blank">   <h6 style="padding:10px">Search</h6></a>
                 </div>
             </div>
                 </div>
                 <div class="row">
                     <div class="col-4"><div id="drager2">
-                            <a href="../ChatBot/index.html" target="_blank"><h6 style="padding:10px">Bot</h6></a></div></div>
+                            <a href="{% url 'chatbot' %}" target="_blank"><h6 style="padding:10px">Bot</h6></a></div></div>
                 <div class="col-4"><div id="drager2">
                         <a href="{% url 'feedback-page' %}" target="_blank"><h6 style="padding:10px">Fback</h6></a></div></div>
                 <div class="col-4"><div id="drager2"><h6 style="padding:10px">Usage</h6></div></div>

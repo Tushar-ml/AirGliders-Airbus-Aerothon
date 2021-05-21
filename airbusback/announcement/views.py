@@ -6,6 +6,7 @@ from rest_framework.parsers import JSONParser
 # Create your views here.
 from .serializers import Announcement_serializer
 from .models import Announcement
+import requests
 
 @api_view(['GET'])
 def get_announcements(request):
@@ -48,3 +49,13 @@ def add_announcement(request):
             serializer.save()
             return JsonResponse(serializer.data,safe=False)
         return JsonResponse(serializer.errors,status=400)
+
+def announcement(request):
+
+    announcements = requests.get('http://127.0.0.1:8000/announcement/get')
+    announceresponse = announcements.json()
+    context = {
+        'announcements' : announceresponse
+    }
+    print(context)
+    return render(request,'announcement.html',context=context)

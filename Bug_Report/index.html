@@ -5,51 +5,49 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
-<body style=" background-color: #f5f5f5">
-        
-    <div  style="display:flex; align-content: center;justify-content: center" >
-        <div  class="row"style="width:400px; margin:10px">
-            <div class="row" style=" border: 2px solid black; background-color: #00205B; color:white;">
-                <h3 style="padding:5px; text-align: center;">REPORT A BUG</h3>
-            </div>
-            <div class="row" style=" border: 2px solid black; padding:20px; background-color: white;">
-                <form>
-                    <div class="form-group ">
-                        <label class="input-group-text" for="inputGroupSelect01">Topic</label>
-                            <select class="form-control" id="inputGroupSelect01">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Subject</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Describe the Bug</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Attach a screenshot</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Your Email</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  
-                </form>
-            </div>
-        </div>
+<body style=" background-color: #4088FF;">
+    <img src="1.jpg" alt="" style=" position: fixed;  bottom: 100;  right: 100;  width: 200px; ">
     
+    <h1  style="padding:5px; text-align: center;  color:white">REPORT A BUG</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style=" border-radius: 10px; background-color: white; padding: 30px;">
+        <form >                   
+                       
+                        <div class="form-group">
+                                <label for="exampleFormControlInput1">Subject</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Describe the Bug</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Attach a screenshot</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Your Email</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    
+            </div>
+              
+           
+        </form>
+        </div> 
     </div>
+    
+   
 </body>
 
 </html>

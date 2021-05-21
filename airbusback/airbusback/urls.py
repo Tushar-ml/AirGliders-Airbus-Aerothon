@@ -22,6 +22,6 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/feedback/',include('feedback.urls')),
-    path('api/announcements/',include('announcement.urls'))
+    path('/feedback/',include('feedback.urls')),
+    path('/announcements/',include('announcement.urls'))
 ]

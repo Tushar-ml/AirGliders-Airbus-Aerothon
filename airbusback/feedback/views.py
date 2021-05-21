@@ -24,26 +24,10 @@ def add_feedback(request):
         serializer = Feedback_Serializer(feedbacks,many=True)
         return JsonResponse(serializer.data,safe=False)
 
-    # if request.method=='POST':
-    #     name = request.POST["name"]
-    #     email = request.POST["email"]
-    #     description = request.POST["description"]
-    #     rating = request.POST["rating"]
-    #     sentiment,score = sentimentAnalyzer(description)
-    #     f = Feedback(name=name, email=email,description=description,rating=rating,sentiment=sentiment,score=score)
-    #     f.save()
-        # print(sentimentAnalyzer(description))
-
-    # return render(request,'index.html')
-
     if request.method=='POST':
-        # username = request.POST.get('username')
         data = dict(request.POST.items())
-        # data = JSONParser().parse(data)
-        # return render(request,'index.html')
         sentiment,score = sentimentAnalyzer(data['description'])
         data['sentiment'],data['score'] = sentiment,score
-        # return render(request,'index.html')
         serializer = Feedback_Serializer(data=data)
         if serializer.is_valid():
             serializer.save()

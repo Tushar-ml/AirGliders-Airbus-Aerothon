@@ -1,0 +1,45 @@
+
+  
+  #drager2 {
+    
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5px;
+  }
+  #drager {
+    position: fixed;
+    bottom: 60px;
+    right: 100px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+  }
+
+  #widgets{
+      width: 200px;
+      height: 150px;
+      display: none;
+  }
+  .main{
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+  }
+  a:link {
+    text-decoration: none;
+    color:black;
+  }

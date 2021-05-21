@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'search.apps.SearchConfig',
     'main.apps.MainConfig',
     'chatbot.apps.ChatbotConfig',
     'feedback.apps.FeedbackConfig',

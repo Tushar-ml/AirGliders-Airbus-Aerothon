@@ -7,7 +7,7 @@ Moreover, we added extra functionality in Application Improvement by adding Sent
 # Steps to run
 
 ```
-pip install -r install requirements.txt
+pip install -r requirements.txt
 cd airbusback
 python manage.py runserver
 ```

@@ -16,6 +16,8 @@ python manage.py runserver
 
 And now open http://127.0.0.1:8000/ in a browser(Preferably Google Chrome).
 
+To see Admin Pages open http://127.0.0.1:8000/admin/ and use login credentials which were created when `python manage.py createsuperuser` was used.
+
 > Main Page
 ![Main Page](./airbusback/../screenshots/Screenshot%202021-05-22%20103346.png)
 

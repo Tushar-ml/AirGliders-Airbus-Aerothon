@@ -13,3 +13,21 @@ python manage.py runserver
 ```
 
 And now open http://127.0.0.1:8000/main/ in a browser(Preferably Google Chrome).
+
+> Main Page
+![Main Page](./airbusback/../screenshots/Screenshot%202021-05-22%20103346.png)
+
+> FeedBack Form
+![FeedBack Form](./screenshots/Screenshot%202021-05-21.jpeg)
+
+> Announcements
+![Announcements](./screenshots/Screenshot%202021-05-22%20103411.png)
+
+> Report Bug
+![Report Bug](./screenshots/Screenshot%202021-05-22%20103311.png)
+
+> Search
+![Search](./screenshots/Screenshot%202021-05-22%20103434.png)
+
+> Admin Page
+![Admin Page](./screenshots/Screenshot%202021-05-22%20110727.png)

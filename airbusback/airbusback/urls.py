@@ -25,7 +25,7 @@ from django.urls.conf import include
 urlpatterns = [
     # path('api/',schema_view),
     path('admin/', admin.site.urls),
-    path('main/',include('main.urls'),name='main-page'),
+    path('',include('main.urls'),name='main-page'),
     path('feedback/',include('feedback.urls')),
     path('announcement/',include('announcement.urls')),
     path('chatbot/',include('chatbot.urls')),

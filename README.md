@@ -12,7 +12,7 @@ cd airbusback
 python manage.py runserver
 ```
 
-And now open http://127.0.0.1:8000/main/ in a browser(Preferably Google Chrome).
+And now open http://127.0.0.1:8000/ in a browser(Preferably Google Chrome).
 
 > Main Page
 ![Main Page](./airbusback/../screenshots/Screenshot%202021-05-22%20103346.png)

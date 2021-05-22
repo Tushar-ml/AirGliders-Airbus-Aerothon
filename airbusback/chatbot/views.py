@@ -6,7 +6,7 @@ from chatterbot.trainers import ListTrainer
 import os
 import openai
 
-openai.api_key = "OPEN_AI_KEY"
+openai.api_key = "sk-0LtZ6txoWVSBeK27yVXYfeSwLksdtDZ2CsnwBMKf"
 completion = openai.Completion()
 
 start_chat_log = '''Human: Hello, who are you?

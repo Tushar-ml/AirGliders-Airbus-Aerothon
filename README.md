@@ -9,6 +9,8 @@ Moreover, we added extra functionality in Application Improvement by adding Sent
 ```
 pip install -r install requirements.txt
 cd airbusback
+python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
